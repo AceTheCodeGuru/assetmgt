@@ -22,10 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['full_name'] = $user['full_name'];
             $_SESSION['role'] = $user['role'];
 
+            if ($user['first_login'] == 1) {
+                header("Location: reset_password.php");
+                exit;
+            }
+
             // Redirect based on role
-            if ($user['role'] === 'admin') {
+            if ($_SESSION['role'] === 'admin') {
                 header("Location: pages/dashboard_admin.php");
-            } elseif ($user['role'] === 'ict') {
+            } elseif ($_SESSION['role'] === 'ict') {
                 header("Location: pages/dashboard_ict.php");
             } else {
                 header("Location: pages/dashboard_employee.php");

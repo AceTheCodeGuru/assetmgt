@@ -2,6 +2,8 @@
 include 'config.php';
 include 'includes/db.php';
 include 'includes/auth.php'; // User must be logged in
+include 'includes/logger.php';
+
 
 //Only allow admins to register new users
 if ($_SESSION['role'] !== 'admin') {
@@ -39,6 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($insert->execute()) {
                 $success = "User registered successfully.";
+
+                    // Log the action
+                    $admin_id = $_SESSION['user_id'];
+                    $registered_email = $email;
+                    logAction($conn, $admin_id, "User Registration", "Registered new user: $registered_email");
             } else {
                 $error = "Registration failed.";
             }
