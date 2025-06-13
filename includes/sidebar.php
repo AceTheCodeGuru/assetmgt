@@ -14,19 +14,25 @@ $role = $_SESSION['role'] ?? 'user'; // Default to 'user' if not set
 
 <?php if ($role === 'admin'): ?>
     <li class="nav-item mb-2">
-    <a href="manage_users.php" class="nav-link text-white">Manage Users</a>
+        <a href="manage_users.php" class="nav-link text-white">Manage Users</a>
     </li>
     <li class="nav-item mb-2">
-    <a href="register_user.php" class="nav-link text-white">Register User</a>
+        <a href="register_user.php" class="nav-link text-white">Register User</a>
     </li>
     <li class="nav-item mb-2">
-    <a href="list_assets.php" class="nav-link text-white">View Assets</a>  
+        <a href="list_assets.php" class="nav-link text-white">View Assets</a>  
     </li>      
     <li class="nav-item mb-2">
-    <a href="register_asset.php" class="nav-link text-white">Register Asset</a>
+        <a href="register_asset.php" class="nav-link text-white">Register Asset</a>
     </li>  
     <li class="nav-item mb-2">
-    <a href="logs.php" class="nav-link text-white">Activity Logs</a>
+        <a href="assign_asset.php" class="nav-link text-white">Assign Assets</a>
+    </li>
+    <li class="nav-item mb-2">
+        <a href="view_assigned_assets.php" class="nav-link text-white">View Assigned Assets</a>
+    </li>
+    <li class="nav-item mb-2">
+        <a href="logs.php" class="nav-link text-white">Activity Logs</a>
     </li> 
     
     <?php endif; ?>
