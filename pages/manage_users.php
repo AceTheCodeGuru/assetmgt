@@ -4,7 +4,7 @@ include '../includes/auth.php';
 include '../includes/logger.php';
 include '../includes/db.php';
 include '../includes/header.php';
-
+include '../includes/sidebar.php';
 
 if ($_SESSION['role'] !== 'admin') {
     die("Access denied.");

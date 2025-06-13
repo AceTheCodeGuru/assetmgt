@@ -1,8 +1,11 @@
-<?php include '../config.php'; ?>
-<?php include '../includes/auth.php'; ?>
-<?php include '../includes/header.php'; ?>
+<?php 
+include '../config.php';
+include '../includes/auth.php';
+include '../includes/header.php'; 
+include '../includes/sidebar.php';
+?>
 
-<h2>Admin Dashboard</h2>
+<h2>Employee Dashboard</h2>
 <p>Welcome, <?= $_SESSION['full_name'] ?> (<?= $_SESSION['role'] ?>)</p>
 
 <a href="../logout.php" class="btn btn-danger">Logout</a>

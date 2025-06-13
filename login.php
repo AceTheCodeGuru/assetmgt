@@ -28,13 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             // Redirect based on role
-            if ($_SESSION['role'] === 'admin') {
-                header("Location: pages/dashboard_admin.php");
-            } elseif ($_SESSION['role'] === 'ict') {
-                header("Location: pages/dashboard_ict.php");
-            } else {
-                header("Location: pages/dashboard_employee.php");
-            }
+            header("Location: pages/dashboard.php");
             exit;
         } else {
             $error = "Invalid credentials.";
@@ -47,20 +41,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include 'includes/header.php'; ?>
 
-<h3>Login</h3>
-<?php if ($error): ?>
-    <div class="alert alert-danger"><?= $error ?></div>
-<?php endif; ?>
-<form method="POST">
-    <div class="mb-3">
-        <label>Email</label>
-        <input name="email" type="email" class="form-control" required>
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body">
+                <!-- Logo Section -->
+                <div class="text-center mb-4">
+                    <img src="assets/images/zambian-coat-of-arms.png" alt="Zambian Coat of Arms" class="img-fluid" style="max-width: 120px; height: auto;">
+                    <h4 class="mt-3">MFL Asset Management System</h4>
+                    <p class="text-muted">Please login to continue</p>
+                </div>
+
+                <?php if ($error): ?>
+                    <div class="alert alert-danger"><?= $error ?></div>
+                <?php endif; ?>
+                
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="email" class=""form-label">Email</label>
+                        <input name="email" type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class=""form-label">Password</label>
+                        <input name="password" type="password" class="form-control" id="password" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label>Password</label>
-        <input name="password" type="password" class="form-control" required>
-    </div>
-    <button class="btn btn-primary">Login</button>
-</form>
+</div>
+
+<style>
+.card {
+    border: none;
+    border-radius: 10px;
+}
+.form-control {
+    border-radius: 5px;
+    padding: 12px;
+}
+.btn-primary {
+    border-radius: 5px;
+    padding: 12px;
+}
+</style>
 
 <?php include 'includes/footer.php'; ?>
