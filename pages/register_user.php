@@ -1,13 +1,13 @@
 <?php
-include 'config.php';
-include 'includes/db.php';
-include 'includes/auth.php'; // User must be logged in
-include 'includes/logger.php';
+include '../config.php';
+include '../includes/db.php';
+include '../includes/auth.php'; // User must be logged in
+include '../includes/logger.php';
 
 
 //Only allow admins to register new users
 if ($_SESSION['role'] !== 'admin') {
-    header("Location: pages/dashboard_admin.php?error=unauthorized");
+    header("Location: dashboard.php?error=unauthorized");
     exit;
 }
 
@@ -54,7 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?php include 'includes/header.php'; ?>
+<?php include '../includes/header.php'; ?>
+<?php include '../includes/sidebar.php'; ?>
 
 <h3>User Registration</h3>
 
@@ -89,4 +90,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button class="btn btn-success">Register</button>
 </form>
 
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

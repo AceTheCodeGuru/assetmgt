@@ -14,7 +14,7 @@ include '../includes/sidebar.php';
     <!-- Admin specific content -->
     <div class="admin-section">
         <h3>Admin Functions</h3>
-        <a href="../register.php" class="btn btn-outline-primary">Add New User</a>
+        <a href="register_user.php" class="btn btn-outline-primary">Add New User</a>
         <a href="manage_users.php" class="btn btn-outline-secondary">Manage Users</a>
         <!-- Add other admin-specific links/content here -->
     </div>

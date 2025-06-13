@@ -2,6 +2,12 @@
 include 'config.php';
 include 'includes/db.php';
 
+// Redirect if user is already logged in
+if (isset($_SESSION['user_id'])) {
+    header("Location: pages/dashboard.php"); // Adjust path if BASE_URL is preferred
+    exit;
+}
+
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -21,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['full_name'] = $user['full_name'];
             $_SESSION['role'] = $user['role'];
+            $_SESSION['last_activity'] = time();
 
             if ($user['first_login'] == 1) {
                 header("Location: reset_password.php");
@@ -54,6 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <?php if ($error): ?>
                     <div class="alert alert-danger"><?= $error ?></div>
+                <?php endif; ?>
+
+                <?php if (isset($_GET['timeout'])): ?>
+                    <div class="alert alert-warning">Your session has expired due to inactivity. Please login again.</div>
                 <?php endif; ?>
                 
                 <form method="POST">

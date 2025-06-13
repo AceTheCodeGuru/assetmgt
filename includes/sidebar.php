@@ -1,6 +1,5 @@
 <?php
 // Make sure the session is started and the user's role is set
-if (!isset($_SESSION)) session_start();
 $role = $_SESSION['role'] ?? 'user'; // Default to 'user' if not set
 ?>
 
@@ -18,11 +17,18 @@ $role = $_SESSION['role'] ?? 'user'; // Default to 'user' if not set
     <a href="manage_users.php" class="nav-link text-white">Manage Users</a>
     </li>
     <li class="nav-item mb-2">
-    <a href="register.php" class="nav-link text-white">Register User</a>
+    <a href="register_user.php" class="nav-link text-white">Register User</a>
     </li>
     <li class="nav-item mb-2">
+    <a href="list_assets.php" class="nav-link text-white">View Assets</a>  
+    </li>      
+    <li class="nav-item mb-2">
+    <a href="register_asset.php" class="nav-link text-white">Register Asset</a>
+    </li>  
+    <li class="nav-item mb-2">
     <a href="logs.php" class="nav-link text-white">Activity Logs</a>
-    </li>
+    </li> 
+    
     <?php endif; ?>
     
     <li class="nav-item mb-2">
