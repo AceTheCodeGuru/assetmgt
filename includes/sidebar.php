@@ -20,7 +20,7 @@ $role = $_SESSION['role'] ?? 'user'; // Default to 'user' if not set
         <a href="register_user.php" class="nav-link text-white">Register User</a>
     </li>
     <li class="nav-item mb-2">
-        <a href="list_assets.php" class="nav-link text-white">View Assets</a>  
+        <a href="view_assets.php" class="nav-link text-white">View Assets</a>  
     </li>      
     <li class="nav-item mb-2">
         <a href="register_asset.php" class="nav-link text-white">Register Asset</a>
@@ -30,6 +30,9 @@ $role = $_SESSION['role'] ?? 'user'; // Default to 'user' if not set
     </li>
     <li class="nav-item mb-2">
         <a href="view_assigned_assets.php" class="nav-link text-white">View Assigned Assets</a>
+    </li>
+    <li class="nav-item mb-2">
+        <a href="view_requests.php" class="nav-link text-white">View Requests</a>
     </li>
     <li class="nav-item mb-2">
         <a href="logs.php" class="nav-link text-white">Activity Logs</a>
@@ -43,7 +46,10 @@ $role = $_SESSION['role'] ?? 'user'; // Default to 'user' if not set
     <li class="nav-item mb-2">
     <a href="maintenance.php" class="nav-link text-white">Maintenance</a>
     </li>
-    
+    <li class="nav-item mb-2">
+    <a href="request_asset.php" class="nav-link text-white">Request Asset</a>
+    </li>
+
     <li class="nav-item mt-4">
     <a href="../logout.php" class="nav-link text-danger">Logout</a>
     </li>

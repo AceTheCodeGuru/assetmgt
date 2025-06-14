@@ -21,14 +21,24 @@ include '../includes/logger.php';
         <th>Purchase Date</th>
         <th>Status</th>
         <th>Location</th>
+        <th>Assigned To</th>
         <th>Added By</th>
       </tr>
     </thead>
     <tbody>
       <?php
-      $sql = "SELECT a.*, u.full_name AS added_by_name 
+      $sql = "SELECT a.*, 
+                     u.full_name AS added_by_name,
+                     aa.user_id AS assigned_user_id,
+                     au.full_name AS assigned_to_name,
+                     CASE 
+                       WHEN aa.user_id IS NOT NULL AND aa.status = 'active' THEN 'Assigned'
+                       ELSE 'Available'
+                     END AS current_status
               FROM assets a 
               LEFT JOIN users u ON a.added_by = u.id 
+              LEFT JOIN asset_assignments aa ON a.id = aa.asset_id AND aa.status = 'active'
+              LEFT JOIN users au ON aa.user_id = au.id
               ORDER BY a.id DESC";
       $result = $conn->query($sql);
 
@@ -41,8 +51,14 @@ include '../includes/logger.php';
             <td><?= htmlspecialchars($row['asset_type']) ?></td>
             <td><?= htmlspecialchars($row['serial_number']) ?></td>
             <td><?= htmlspecialchars($row['purchase_date']) ?></td>
-            <td><?= htmlspecialchars($row['status']) ?></td>
+            <td>
+              <span class="badge <?= $row['current_status'] === 'Assigned' ? 'bg-warning' : 'bg-success' ?>">
+                <?= htmlspecialchars($row['current_status']) ?>
+              </span>
+            </td>
+            <!-- <td><?= htmlspecialchars($row['status']) ?></td> -->
             <td><?= htmlspecialchars($row['location']) ?></td>
+            <td><?= $row['assigned_to_name'] ? htmlspecialchars($row['assigned_to_name']) : '-' ?></td>            
             <td><?= htmlspecialchars($row['added_by_name']) ?></td>
           </tr>
       <?php

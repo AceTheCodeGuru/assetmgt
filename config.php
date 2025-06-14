@@ -4,4 +4,4 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-define('BASE_URL', 'http://localhost/asset-management-system/');
+define('BASE_URL', 'http://localhost/assetmgt/');
